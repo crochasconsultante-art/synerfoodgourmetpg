@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synerfood Gourmet — L'épicerie fine espagnole s'invite à votre table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       TOKENS & RESET
+    ============================================================ */
+    :root {
+      --bordeaux:   #952456;
+      --bordeaux-dk:#6e1a3f;
+      --bordeaux-lt:#c4416e;
+      --gold:       #fbb900;
+      --olive:      #779888;
+      --slate:      #526572;
+      --cream:      #faf7f2;
+      --warm-white: #fffef9;
+      --ink:        #1a1410;
+      --ink-soft:   #3d3028;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'Jost', sans-serif;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --shadow-card: 0 2px 20px rgba(26,20,16,.07), 0 1px 4px rgba(26,20,16,.04);
+      --shadow-hover: 0 8px 40px rgba(149,36,86,.12), 0 2px 8px rgba(149,36,86,.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* ============================================================
+       BANNIÈRE HERO — SVG généré inline
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    /* Bannière SVG décorative */
+    .hero__canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(26,20,16,0) 30%,
+        rgba(26,20,16,.55) 65%,
+        rgba(26,20,16,.88) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 6vw, 5rem) clamp(1.5rem, 8vw, 7rem);
+      max-width: 1200px;
+    }
+
+    .hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp .8s var(--ease-out) .2s forwards;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--warm-white);
+	  margin-bottom: 1.2rem;
+      max-width: 14ch;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) .35s forwards;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: var(--bordeaux-lt);
+    }
+
+    .hero__sub {
+      margin-top: 1.5rem;
+      font-family: var(--font-body);
+      font-size: clamp(1.2rem, 1.8vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,.78);
+      max-width: 44ch;
+      line-height: 1.55;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) .5s forwards;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: clamp(1.5rem, 6vw, 5rem);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 1.2s forwards;
+    }
+    .hero__scroll span {
+      writing-mode: vertical-rl;
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+    }
+    .hero__scroll::after {
+      content: '';
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+    }
+
+    /* Logo in header */
+    .hero__logo {
+      position: absolute;
+      top: 2.5rem;
+      left: clamp(3rem, 6vw, 5rem);
+      z-index: 3;
+    }
+    .hero__logo img {
+      height: clamp(48px, 6vw, 70px);
+    }
+
+    /* ============================================================
+       PROMISE STRIP
+    ============================================================ */
+    .promise {
+      background: var(--bordeaux-dk);
+      color: white;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 8vw, 7rem);
+    }
+    .promise__grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 5rem;
+      align-items: start;
+    }
+    .promise__intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .promise__intro h2 strong {
+      font-weight: 600;
+      display: block;
+    }
+    .promise__intro p {
+      font-size: .95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: .88;
+    }
+    .promise__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+    .promise__card {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .promise__icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .promise__card-text h3 {
+      font-family: var(--font-body);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: .3rem;
+      opacity: .7;
+    }
+    .promise__card-text p {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.55;
+      opacity: .85;
+    }
+
+    /* ============================================================
+       SECTION HEADER REUSABLE
+    ============================================================ */
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto clamp(2.5rem, 4vw, 4rem);
+      padding: 0 clamp(1.5rem, 8vw, 7rem);
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+    }
+    .section-header h2 em {
+      font-style: italic;
+      color: var(--bordeaux);
+    }
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--bordeaux), transparent);
+    }
+
+    /* ============================================================
+       PRODUCTS ACCORDION
+    ============================================================ */
+    .products {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background: var(--warm-white);
+    }
+
+    .accordion {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 8vw, 7rem);
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .accordion__item {
+      border: 1px solid rgba(149,36,86,.12);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: box-shadow .3s var(--ease-out);
+    }
+    .accordion__item:hover {
+      box-shadow: var(--shadow-hover);
+    }
+    .accordion__item.is-open {
+      border-color: var(--bordeaux);
+    }
+
+    .accordion__trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
+    .accordion__item.is-open .accordion__trigger {
+      background: rgba(149,36,86,.04);
+    }
+
+    .accordion__color-dot {
+      flex-shrink: 0;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .accordion__label {
+      flex: 1;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .accordion__item.is-open .accordion__label {
+      color: var(--bordeaux);
+    }
+
+    .accordion__meta {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 400;
+    }
+
+    .accordion__arrow {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(149,36,86,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .35s var(--ease-out), background .2s, border-color .2s;
+    }
+    .accordion__arrow svg {
+      width: 12px; height: 12px;
+      fill: none;
+      stroke: var(--bordeaux);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .accordion__item.is-open .accordion__arrow {
+      transform: rotate(180deg);
+      background: var(--bordeaux);
+      border-color: var(--bordeaux);
+    }
+    .accordion__item.is-open .accordion__arrow svg { stroke: white; }
+
+    .accordion__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s var(--ease-out);
+    }
+
+    .accordion__inner {
+      padding: 0 1.8rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem 3rem;
+    }
+
+    .accordion__description {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      padding-top: .5rem;
+    }
+    .accordion__description strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .accordion__products-list {
+      list-style: none;
+      padding-top: .5rem;
+    }
+    .accordion__products-list li {
+      display: flex;
+      align-items: baseline;
+      gap: .8rem;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(0,0,0,.05);
+      font-size: .88rem;
+      font-weight: 300;
+    }
+    .accordion__products-list li:last-child { border-bottom: none; }
+    .accordion__products-list li::before {
+      content: '—';
+      color: var(--bordeaux);
+      opacity: .6;
+      flex-shrink: 0;
+      font-size: .7rem;
+    }
+    .product-name {
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .product-detail {
+      color: var(--slate);
+      font-size: .8rem;
+    }
+
+    /* ============================================================
+       TÉMOIGNAGES
+    ============================================================ */
+    .testimonials {
+      padding: clamp(4rem, 7vw, 6rem) 0;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .testimonials__track {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0 clamp(1.5rem, 8vw, 7rem);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonials__track::-webkit-scrollbar { display: none; }
+
+    .testimonial__card {
+      flex-shrink: 0;
+      width: clamp(260px, 32vw, 340px);
+      background: white;
+      border-radius: 4px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-card);
+      border-left: 3px solid var(--bordeaux);
+    }
+
+    .testimonial__quote {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--bordeaux);
+      opacity: .3;
+      margin-bottom: .5rem;
+    }
+    .testimonial__text {
+      font-size: .88rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+    .testimonial__author {
+      margin-top: 1.2rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--bordeaux);
+    }
+    .testimonial__location {
+      font-size: .72rem;
+      font-weight: 300;
+      color: var(--slate);
+      margin-top: .15rem;
+    }
+
+    /* ============================================================
+       CTA / TÉLÉCHARGEMENTS
+    ============================================================ */
+    .downloads {
+      padding: clamp(4rem, 7vw, 6rem) clamp(1.5rem, 8vw, 7rem);
+      background: var(--slate);
+    }
+    .downloads__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 5rem;
+      align-items: center;
+    }
+    .downloads__intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .downloads__intro h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .downloads__intro p {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.55);
+    }
+
+    .downloads__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.6rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 300;
+      letter-spacing: .03em;
+      transition: background .25s, border-color .25s, transform .2s var(--ease-out);
+    }
+    .btn-download:hover {
+      background: rgba(149,36,86,.25);
+      border-color: var(--bordeaux-lt);
+      transform: translateX(4px);
+    }
+    .btn-download__icon {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+    }
+    .btn-download__icon--pdf { background: rgba(149,36,86,.4); color: #f4a7c0; }
+    .btn-download__icon--xls { background: rgba(119,152,136,.3); color: #a8d0bc; }
+    .btn-download__text strong {
+      display: block;
+      font-weight: 500;
+      font-size: .9rem;
+      margin-bottom: .1rem;
+    }
+    .btn-download__text span {
+      font-size: .75rem;
+      color: rgba(255,255,255,.4);
+    }
+    .btn-download__arrow {
+      margin-left: auto;
+      opacity: .35;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-download:hover .btn-download__arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--bordeaux-dk);
+      color: white;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 8vw, 7rem);
+    }
+    .footer__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .footer__brand img {
+      height: 60px;
+      filter: no;
+      opacity: .9;
+      margin-bottom: 1rem;
+    }
+    .footer__brand p {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: .55;
+    }
+    .footer__contact h4 {
+      font-family: var(--font-body);
+      font-size: .90rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: .4;
+      margin-bottom: 1rem;
+    }
+    .footer__contact a {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .85rem;
+      font-weight: 300;
+      color: white;
+      text-decoration: none;
+      opacity: .8;
+      margin-bottom: .55rem;
+      transition: opacity .2s;
+    }
+    .footer__contact a:hover { opacity: 1; }
+    .footer__contact address {
+      font-style: normal;
+      font-size: .82rem;
+      font-weight: 300;
+      opacity: .5;
+      line-height: 1.55;
+      margin-top: .8rem;
+    }
+    .footer__copy {
+      font-size: .72rem;
+      font-weight: 300;
+      opacity: .35;
+      line-height: 1.6;
+      padding-top: .4rem;
+    }
+    .footer__divider {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer__divider p {
+      font-size: .7rem;
+      opacity: .3;
+      font-weight: 300;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .promise__grid,
+      .accordion__inner,
+      .downloads__inner,
+      .footer__inner {
+        grid-template-columns: 1fr;
+      }
+      .section-header { gap: .8rem; }
+    }
+    @media (max-width: 480px) {
+      .accordion__meta { display: none; }
+      .accordion__trigger { padding: 1.1rem 1.2rem; gap: 1rem; }
+      .accordion__inner { padding: 0 1.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" aria-label="Présentation Synerfood Gourmet">
+
+  <!-- Logo -->
+  <div class="hero__logo">
+    <img src="logo.png" alt="Synerfood Gourmet" />
+  </div>
+
+  <!-- Bannière SVG artisanale illustrant l'Espagne gourmande -->
+  <svg class="hero__canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
+       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <!-- Gradient ciel andalou -->
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a1410"/>
+        <stop offset="40%" stop-color="#2d1c28"/>
+        <stop offset="100%" stop-color="#3d1f18"/>
+      </linearGradient>
+      <!-- Texture grain -->
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+        <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+        <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+      </filter>
+      <!-- Blur doux -->
+      <filter id="soft-blur">
+        <feGaussianBlur stdDeviation="1.5"/>
+      </filter>
+      <radialGradient id="glow-bordeaux" cx="70%" cy="60%" r="50%">
+        <stop offset="0%" stop-color="#952456" stop-opacity=".35"/>
+        <stop offset="100%" stop-color="#952456" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glow-gold" cx="25%" cy="30%" r="35%">
+        <stop offset="0%" stop-color="#fbb900" stop-opacity=".12"/>
+        <stop offset="100%" stop-color="#fbb900" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Fond de scène -->
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <rect width="1440" height="900" fill="url(#glow-bordeaux)"/>
+    <rect width="1440" height="900" fill="url(#glow-gold)"/>
+
+    <!-- Collines arrière-plan -->
+    <ellipse cx="200" cy="620" rx="420" ry="180" fill="#2a1a14" opacity=".7"/>
+    <ellipse cx="900" cy="680" rx="650" ry="200" fill="#1e1510" opacity=".8"/>
+    <ellipse cx="1350" cy="640" rx="380" ry="160" fill="#281a12" opacity=".6"/>
+
+    <!-- Ligne d'horizon / sol ocre -->
+    <path d="M0 720 Q 300 680 600 700 Q 900 720 1200 690 Q 1350 680 1440 700 L1440 900 L0 900Z"
+          fill="#3d2012" opacity=".9"/>
+    <path d="M0 780 Q 400 760 800 775 Q 1100 785 1440 765 L1440 900 L0 900Z"
+          fill="#2a1508" opacity=".95"/>
+
+    <!-- Vignes stylisées — rangées gauche -->
+    <g opacity=".55" filter="url(#soft-blur)">
+      <line x1="60" y1="700" x2="60" y2="740" stroke="#5a3520" stroke-width="2"/>
+      <ellipse cx="60" cy="698" rx="18" ry="12" fill="#3d5c30" opacity=".8"/>
+      <line x1="110" y1="695" x2="110" y2="738" stroke="#5a3520" stroke-width="2"/>
+      <ellipse cx="110" cy="693" rx="16" ry="11" fill="#3d5c30" opacity=".7"/>
+      <line x1="158" y1="700" x2="158" y2="740" stroke="#5a3520" stroke-width="1.5"/>
+      <ellipse cx="158" cy="698" rx="15" ry="10" fill="#3d5c30" opacity=".65"/>
+      <line x1="202" y1="706" x2="202" y2="745" stroke="#5a3520" stroke-width="1.5"/>
+      <ellipse cx="202" cy="704" rx="14" ry="9" fill="#4a6035" opacity=".6"/>
+      <line x1="245" y1="710" x2="245" y2="748" stroke="#5a3520" stroke-width="1.5"/>
+      <ellipse cx="245" cy="708" rx="13" ry="9" fill="#3d5c30" opacity=".55"/>
+    </g>
+
+    <!-- Oliviers — zone centrale -->
+    <g opacity=".45">
+      <path d="M680 650 Q695 610 710 650 Q730 620 740 655 Q755 615 760 650 Q780 625 785 658 L760 720 L690 720Z"
+            fill="#4a6040" opacity=".7"/>
+      <line x1="730" y1="720" x2="730" y2="760" stroke="#5a3520" stroke-width="3"/>
+
+      <path d="M820 660 Q832 625 845 660 Q860 632 868 663 Q878 640 882 665 L862 718 L800 718Z"
+            fill="#3d5c30" opacity=".6"/>
+      <line x1="840" y1="718" x2="840" y2="755" stroke="#5a3520" stroke-width="2.5"/>
+    </g>
+
+    <!-- Bouteille de vin silhouette - droite -->
+    <g transform="translate(1180, 480)" opacity=".18">
+      <rect x="18" y="80" width="24" height="130" rx="2" fill="#952456"/>
+      <rect x="14" y="70" width="32" height="15" rx="2" fill="#952456"/>
+      <rect x="20" y="55" width="20" height="18" rx="1" fill="#952456"/>
+      <rect x="23" y="38" width="14" height="20" rx="7" fill="#952456"/>
+    </g>
+    <g transform="translate(1230, 510)" opacity=".12">
+      <rect x="16" y="75" width="22" height="118" rx="2" fill="#fbb900"/>
+      <rect x="12" y="66" width="30" height="13" rx="2" fill="#fbb900"/>
+      <rect x="18" y="50" width="18" height="17" rx="1" fill="#fbb900"/>
+      <rect x="21" y="34" width="12" height="18" rx="6" fill="#fbb900"/>
+    </g>
+
+    <!-- Ruche stylisée – petit élément décoratif -->
+    <g transform="translate(480, 600)" opacity=".3">
+      <polygon points="20,0 40,12 40,34 20,46 0,34 0,12" fill="none" stroke="#fbb900" stroke-width="1.5"/>
+      <polygon points="20,8 32,15 32,29 20,36 8,29 8,15" fill="#fbb900" opacity=".15"/>
+    </g>
+
+    <!-- Particules / étoiles -->
+    <g opacity=".25">
+      <circle cx="340" cy="180" r="1.2" fill="#fbb900"/>
+      <circle cx="580" cy="120" r="1" fill="white"/>
+      <circle cx="760" cy="200" r="1.5" fill="#fbb900"/>
+      <circle cx="990" cy="95" r="1" fill="white"/>
+      <circle cx="1120" cy="170" r="1.2" fill="#fbb900"/>
+      <circle cx="1300" cy="130" r="1" fill="white"/>
+      <circle cx="150" cy="260" r="1" fill="white"/>
+      <circle cx="450" cy="80" r="1.5" fill="#fbb900"/>
+    </g>
+
+    <!-- Ligne décorative bordeaux en diagonale -->
+    <line x1="0" y1="430" x2="500" y2="330" stroke="#952456" stroke-width="1" opacity=".18"/>
+    <line x1="0" y1="460" x2="420" y2="380" stroke="#952456" stroke-width=".5" opacity=".1"/>
+
+    <!-- Grain de texture global -->
+    <rect width="1440" height="900" fill="transparent" filter="url(#grain)" opacity=".06"/>
+  </svg>
+
+  <div class="hero__overlay"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Épicerie fine · Sélection directe producteurs</p>
+    <h1 class="hero__title">
+      L'épicerie fine espagnole<br/>
+      <em>s'invite à votre table</em>
+    </h1>
+    <p class="hero__sub">
+      Des terroirs d'Espagne à votre assiette — directement.
+    </p>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Découvrir</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROMESSE
+============================================================ -->
+<section class="promise" aria-label="Notre promesse">
+  <div class="promise__grid">
+    <div class="promise__intro">
+      <h2>
+        Une sélection<br/>
+        <strong>d'exception,<br/>choisie à la source</strong>
+      </h2>
+      <p>
+        Synerfood Gourmet sélectionne ce que l'Espagne produit de meilleur&nbsp;: 
+        des produits authentiques, sourcés directement auprès des producteurs, 
+        disponibles toute l'année pour composer des menus qui étonnent et fidélisent.
+      </p>
+    </div>
+    <div class="promise__cards">
+      <div class="promise__card">
+        <div class="promise__icon"></div>
+        <div class="promise__card-text">
+          <h3>Réseau producteur de premier plan</h3>
+          <p>Un approvisionnement direct, construit dans la durée — pour une qualité constante.</p>
+        </div>
+      </div>
+      <div class="promise__card">
+        <div class="promise__icon"></div>
+        <div class="promise__card-text">
+          <h3>Toute la diversité espagnole</h3>
+          <p>De La Rioja aux terres andalouses, une offre représentative de chaque terroir, enrichie au fil des saisons.</p>
+        </div>
+      </div>
+      <div class="promise__card">
+        <div class="promise__icon"></div>
+        <div class="promise__card-text">
+          <h3>Une offre adaptée à vos marchés</h3>
+          <p>Marchés du Sud-Ouest, vente à distance, entreprises et CE/CSE, évènementiels : nous nous adaptons à vos circuits de distribution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GAMME — ACCORDÉON
+============================================================ -->
+<section class="products" aria-label="Nos familles de produits" id="produits">
+  <div class="section-header">
+    <h2>Cinq familles de produits <em>remarquables</em></h2>
+  </div>
+
+  <div class="accordion" role="list">
+
+    <!-- 1. VINS -->
+    <div class="accordion__item" role="listitem">
+      <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-vins">
+        <span class="accordion__color-dot" style="background:#952456"></span>
+        <span class="accordion__label">Les Vins</span>
+        <span class="accordion__meta">La Rioja · Cigales · El Bierzo</span>
+        <span class="accordion__arrow" aria-hidden="true">
+          <svg viewBox="0 0 12 8"><polyline points="1,1 6,7 11,1"/></svg>
+        </span>
+      </button>
+      <div class="accordion__body" id="acc-vins">
+        <div class="accordion__inner">
+          <p class="accordion__description">
+            La Rioja, premier vignoble d'appellation de qualité d'Espagne — DOCa depuis 1991 — produit des vins puissants aux arômes de fruits rouges, tanins ronds et belle acidité. Notre sélection couvre <strong>cinq bodegas</strong> emblématiques, de La Rioja mais pas que, du cépage Tempranillo aux vins naturels Bio sans sulfites.
+          </p>
+          <ul class="accordion__products-list">
+            <li>
+              <span class="product-name">Bodegas Florentino Martínez</span>
+              <span class="product-detail">Distercio Crianza, Maturana, Florentius, Clarete</span>
+            </li>
+            <li>
+              <span class="product-name">Bodegas Manzanos</span>
+              <span class="product-detail">Jilabá Crianza — vendanges manuelles, vignes de 1940</span>
+            </li>
+            <li>
+              <span class="product-name">Bodegas Vallobera</span>
+              <span class="product-detail">El Marido de mi Amiga (blanc), Vente Conmigo (rosé) — 10,5°</span>
+            </li>
+            <li>
+              <span class="product-name">Bodegas César Príncipe</span>
+              <span class="product-detail">13 Cántaros Nicolás (rouge), Charlatán (rosé Garnacha)</span>
+            </li>
+            <li>
+              <span class="product-name">La Puerta del Viento — Jorge Vega</span>
+              <span class="product-detail">Mencía Bio, Vajo Velo (blanc Godello), Clarete — vin naturel, 1er vigneron espagnol Vin Méthode Nature</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. HUILE D'OLIVE -->
+    <div class="accordion__item" role="listitem">
+      <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-huile">
+        <span class="accordion__color-dot" style="background:#779888"></span>
+        <span class="accordion__label">L'Huile d'Olive</span>
+        <span class="accordion__meta">Agrícola La Maja · Navarre</span>
+        <span class="accordion__arrow" aria-hidden="true">
+          <svg viewBox="0 0 12 8"><polyline points="1,1 6,7 11,1"/></svg>
+        </span>
+      </button>
+      <div class="accordion__body" id="acc-huile">
+        <div class="accordion__inner">
+          <p class="accordion__description">
+            L'Espagne est le <strong>1er producteur mondial</strong> d'huile d'olive. Agrícola La Maja (Mendavia, Navarre), notée <strong>96/100</strong> sur l'annuaire mondial des huileries, livre une extraction à froid à 27°C max. Ses produits sont référencés par plusieurs chefs étoilés Michelin en Espagne et en France.
+          </p>
+          <ul class="accordion__products-list">
+            <li>
+              <span class="product-name">Alfar</span>
+              <span class="product-detail">Bouteille verre 50 cl, 75 cl · Boîte 1 l et 5 l</span>
+            </li>
+            <li>
+              <span class="product-name">La Maja</span>
+              <span class="product-detail">Assemblage d'élite, bouteille sérigraphiée 50 cl</span>
+            </li>
+            <li>
+              <span class="product-name">E.L. Arróniz</span>
+              <span class="product-detail">Variété locale · 50 cl</span>
+            </li>
+            <li>
+              <span class="product-name">E.L. Arbosana</span>
+              <span class="product-detail">Bouteille verre 50 cl</span>
+            </li>
+            <li>
+              <span class="product-name">E.L. Eco / Bio</span>
+              <span class="product-detail">Variété Arbequine · 50 cl et bidon 2 l</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PRODUITS DE LA RUCHE -->
+    <div class="accordion__item" role="listitem">
+      <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-miel">
+        <span class="accordion__color-dot" style="background:#fbb900"></span>
+        <span class="accordion__label">Les Produits de la Ruche</span>
+        <span class="accordion__meta">Verdemiel · Urzapa · Andalousie & León</span>
+        <span class="accordion__arrow" aria-hidden="true">
+          <svg viewBox="0 0 12 8"><polyline points="1,1 6,7 11,1"/></svg>
+        </span>
+      </button>
+      <div class="accordion__body" id="acc-miel">
+        <div class="accordion__inner">
+          <p class="accordion__description">
+            Miels Bio mono-floraux, crus — non filtrés, non chauffés. <strong>Verdemiel</strong> (Andalousie, 3 générations) utilise l'abeille noire ibérique sur 4 provinces. <strong>Urzapa</strong> (Leòn) cumule les médailles internationales dont double médaille d'or à Bologne 2015.
+          </p>
+          <ul class="accordion__products-list">
+            <li>
+              <span class="product-name">Verdemiel</span>
+              <span class="product-detail">Prairie · Miellat de chêne vert · Fleur d'oranger · Lavande</span>
+            </li>
+            <li>
+              <span class="product-name">Urzapa — Miels Bio</span>
+              <span class="product-detail">Ronce · Thym · Eucalyptus · Lavande · Romarin — 500 g et 1 kg</span>
+            </li>
+            <li>
+              <span class="product-name">Urzapa — Pollen sec</span>
+              <span class="product-detail">225 g</span>
+            </li>
+            <li>
+              <span class="product-name">Spray buccal de propolis Bio</span>
+              <span class="product-detail">30 ml</span>
+            </li>
+            <li>
+              <span class="product-name">Composé vitaminé</span>
+              <span class="product-detail">Miel + pollen + gelée royale · 300 g</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. CONSERVES -->
+    <div class="accordion__item" role="listitem">
+      <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-conserves">
+        <span class="accordion__color-dot" style="background:#8496a8"></span>
+        <span class="accordion__label">Les Conserves</span>
+        <span class="accordion__meta">Végétales Pedro Luis · Thon blanc Nuevo Libe</span>
+        <span class="accordion__arrow" aria-hidden="true">
+          <svg viewBox="0 0 12 8"><polyline points="1,1 6,7 11,1"/></svg>
+        </span>
+      </button>
+      <div class="accordion__body" id="acc-conserves">
+        <div class="accordion__inner">
+          <p class="accordion__description">
+            <strong>Conservas Pedro Luis</strong> (Navarre, fort engagement en Bio, AOP Piquillo de Lodosa + IGP) garantit une production artisanale sous signes de qualité depuis 1988. <strong>Nuevo Libe</strong> est la seule conserverie de thon blanc de Cantabrie possédant son propre bateau de pêche — thon pêché à la ligne depuis Santoña.
+          </p>
+          <ul class="accordion__products-list">
+            <li>
+              <span class="product-name">Poivrons Piquillos en lanières</span>
+              <span class="product-detail">AOP Piquillo de Lodosa · Pedro Luis</span>
+            </li>
+            <li>
+              <span class="product-name">Sauce tomate frite Bio</span>
+              <span class="product-detail">Pedro Luis</span>
+            </li>
+            <li>
+              <span class="product-name">Crème de légumes secs Bio · Crème de petits pois</span>
+              <span class="product-detail">Pedro Luis</span>
+            </li>
+            <li>
+              <span class="product-name">Combiné de légumes Bio</span>
+              <span class="product-detail">Pedro Luis</span>
+            </li>
+            <li>
+              <span class="product-name">Longe de thon blanc à l'huile d'olive ou au naturel</span>
+              <span class="product-detail">Nuevo Libe · Pêché à la ligne</span>
+            </li>
+            <li>
+              <span class="product-name">Miettes de thon blanc</span>
+              <span class="product-detail">À l'huile de tournesol ou en ratatouille · Nuevo Libe</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SALAISONS & DOUCEURS -->
+    <div class="accordion__item" role="listitem">
+      <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-salaisons">
+        <span class="accordion__color-dot" style="background:#952456"></span>
+        <span class="accordion__label">Salaisons &amp; Douceurs</span>
+        <span class="accordion__meta">Ibéricos Guillén · Chorizo Ismaël · Turrón Pablo Garrigós</span>
+        <span class="accordion__arrow" aria-hidden="true">
+          <svg viewBox="0 0 12 8"><polyline points="1,1 6,7 11,1"/></svg>
+        </span>
+      </button>
+      <div class="accordion__body" id="acc-salaisons">
+        <div class="accordion__inner">
+          <p class="accordion__description">
+            <strong>Ibéricos Guillén</strong> (Guijuelo, 1971), élevage propre au Portugal, séchage à l'air naturel. <strong>Chorizo Ismaël</strong> — porc Duroc sans additif, conditionné sous atmosphère modifiée, depuis Muro de Aguas (La Rioja). <strong>Pablo Garrigós Ibáñez</strong> (Jijona, Alicante) : turrón artisanal, amandes Marcona, ligne SeleQta.
+          </p>
+          <ul class="accordion__products-list">
+            <li>
+              <span class="product-name">Lomo ibérique</span>
+              <span class="product-detail">Filet / longe · 6 mois de séchage · Ibéricos Guillén</span>
+            </li>
+            <li>
+              <span class="product-name">Chorizo ibérique</span>
+              <span class="product-detail">4 mois · Ibéricos Guillén</span>
+            </li>
+            <li>
+              <span class="product-name">Saucisson ibérique</span>
+              <span class="product-detail">4 mois · Ibéricos Guillén</span>
+            </li>
+            <li>
+              <span class="product-name">Chorizo Ismaël</span>
+              <span class="product-detail">Piquant «&nbsp;motivant&nbsp;» ou très piquant · Porc Duroc · sans additif</span>
+            </li>
+            <li>
+              <span class="product-name">Turrón d'Alicante</span>
+              <span class="product-detail">Croquant · 150 g · Ligne SeleQta · Pablo Garrigós Ibáñez</span>
+            </li>
+            <li>
+              <span class="product-name">Turrón de Jijona</span>
+              <span class="product-detail">Tendre · 150 g · Ligne SeleQta · Pablo Garrigós Ibáñez</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /accordion -->
+</section>
+
+
+<!-- ============================================================
+     TÉMOIGNAGES
+============================================================ -->
+<section class="testimonials" aria-label="Paroles de clients">
+  <div class="section-header">
+    <h2>Paroles de <em>clients</em></h2>
+  </div>
+  <div class="testimonials__track" role="list">
+
+    <article class="testimonial__card" role="listitem">
+      <div class="testimonial__quote">"</div>
+      <p class="testimonial__text">D'excellents produits du terroir espagnol — des huiles d'olive que nous aimons beaucoup et que nous rapportons aussi pour des amis.</p>
+      <p class="testimonial__author">Richard M.</p>
+      <p class="testimonial__location">Montcuq &amp; Paris</p>
+    </article>
+
+    <article class="testimonial__card" role="listitem">
+      <div class="testimonial__quote">"</div>
+      <p class="testimonial__text">M. Larrieu nous fait découvrir de bons vins espagnols accompagnés de leur histoire. D'excellentes charcuteries fines, de l'huile d'olive et un miel que nous partageons avec nos amis des Ardennes.</p>
+      <p class="testimonial__author">Marie-Laure &amp; Thierry T.</p>
+      <p class="testimonial__location">Montcuq &amp; Ardennes</p>
+    </article>
+
+    <article class="testimonial__card" role="listitem">
+      <div class="testimonial__quote">"</div>
+      <p class="testimonial__text">Les Délices d'Espagne choisis avec discernement et compétence par Bernard sont un vrai régal : soupes, jus de tomates, thon, huiles d'olives, vins, miels...</p>
+      <p class="testimonial__author">Marie-Françoise C.</p>
+      <p class="testimonial__location">Lectoure — Gers</p>
+    </article>
+
+    <article class="testimonial__card" role="listitem">
+      <div class="testimonial__quote">"</div>
+      <p class="testimonial__text">La qualité de base (en bidon de 5 litres) est bien meilleure que celle des grandes marques vendues en supermarché. Bernard connaît les bonnes adresses grâce à son expérience sur place.</p>
+      <p class="testimonial__author">Peter T.</p>
+      <p class="testimonial__location">Belgique &amp; Gers</p>
+    </article>
+
+    <article class="testimonial__card" role="listitem">
+      <div class="testimonial__quote">"</div>
+      <p class="testimonial__text">Nul produit n'a de secret pour lui, le tout émaillé de savoureuses anecdotes. Je souhaite une longue vie à cette présence en terre condomoise.</p>
+      <p class="testimonial__author">Jean-Marc B.</p>
+      <p class="testimonial__location">Condom</p>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TÉLÉCHARGEMENTS
+============================================================ -->
+<section class="downloads" aria-label="Documents à télécharger" id="documents">
+  <div class="downloads__inner">
+    <div class="downloads__intro">
+      <h2>
+        Découvrez notre univers<br/>
+        <em>en détail</em>
+      </h2>
+      <p>Plaquette complète, tarifs actualisés et processus de commande — tout ce qu'il vous faut pour passer commande ou présenter nos produits à vos clients.</p>
+    </div>
+    <div class="downloads__buttons">
+
+      <a href="plaquette.pdf" class="btn-download" download aria-label="Télécharger la plaquette Délices d'Espagne 2026">
+        <span class="btn-download__icon btn-download__icon--pdf">PDF</span>
+        <span class="btn-download__text">
+          <strong>Plaquette Délices d'Espagne 2026</strong>
+          <span>Présentation complète des produits et producteurs</span>
+        </span>
+        <span class="btn-download__arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="tarifs.xlsx" class="btn-download" download aria-label="Télécharger le tarif 2026">
+        <span class="btn-download__icon btn-download__icon--xls">XLSX</span>
+        <span class="btn-download__text">
+          <strong>Tarif actualisé au 01/01/2026</strong>
+          <span>Grille tarifaire complète</span>
+        </span>
+        <span class="btn-download__arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="processcommande.pdf" class="btn-download" download aria-label="Télécharger le processus de commande">
+        <span class="btn-download__icon btn-download__icon--pdf">PDF</span>
+        <span class="btn-download__text">
+          <strong>Comment commander</strong>
+          <span>Processus de commande étape par étape</span>
+        </span>
+        <span class="btn-download__arrow" aria-hidden="true">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="logo.png" alt="Synerfood Gourmet" />
+      <p>Sélection, importation et commercialisation<br/>de produits gastronomiques espagnols<br/>directement auprès des producteurs.</p>
+    </div>
+    <div class="footer__contact">
+      <h4>Prêt à commander ?</h4>
+      <a href="mailto:gourmet@synerfood.com">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <rect x="1" y="3" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          <polyline points="1,3 7,8 13,3" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        gourmet@synerfood.com
+      </a>
+      <a href="tel:+33766654967">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M4 2h2l1 3-1.5 1.5a8 8 0 0 0 3 3L10 8l3 1v2a1 1 0 0 1-1 1A10 10 0 0 1 2 3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        +33 (0)7 66 65 49 67
+      </a>
+      <address>
+        Bernard Larrieu<br/>
+        Avenue de Lomagne<br/>
+        32310 Saint-Puy
+      </address>
+    </div>
+    <div class="footer__copy">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;opacity:.8;margin-bottom:.8rem;font-style:italic;">
+        Des terroirs d'Espagne à votre assiette.
+      </p>
+      <p>Conception graphique&nbsp;: C. Rochas design profiling</p>
+      <p style="margin-top:.4rem;">© Synerfood Gourmet 2026 — Tous droits réservés</p>
+    </div>
+  </div>
+  <div class="footer__divider">
+    <p>Produits d'exception · Traçabilité totale · Approvisionnement direct producteurs</p>
+    <p><a href="#produits" style="text-decoration:none;opacity:.35;color:white;">↑ Haut de page</a></p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT — Accordéon
+============================================================ -->
+<script>
+  document.querySelectorAll('.accordion__trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.accordion__item');
+      const body   = item.querySelector('.accordion__body');
+      const isOpen = item.classList.contains('is-open');
+
+      // Ferme tous les autres
+      document.querySelectorAll('.accordion__item.is-open').forEach(open => {
+        if (open !== item) {
+          open.classList.remove('is-open');
+          open.querySelector('.accordion__body').style.maxHeight = '0';
+          open.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        body.style.maxHeight = '0';
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
